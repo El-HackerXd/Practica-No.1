@@ -1,0 +1,95 @@
+using System;
+
+namespace FractionOperations
+{
+    class Fraction
+    {
+        private int numerator;
+        private int denominator;
+
+        public Fraction(int numerator, int denominator)
+        {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        }
+
+        public void Simplify()
+        {
+            int gcd = GCD(numerator, denominator);
+            numerator /= gcd;
+            denominator /= gcd;
+        }
+
+        private int GCD(int a, int b)
+        {
+            if (b == 0)
+                return a;
+            return GCD(b, a % b);
+        }
+
+        public override string ToString()
+        {
+            return $"{numerator}/{denominator}";
+        }
+
+        public static Fraction operator +(Fraction f1, Fraction f2)
+        {
+            int lcm = LCM(f1.denominator, f2.denominator);
+            int num = f1.numerator * (lcm / f1.denominator) + f2.numerator * (lcm / f2.denominator);
+            return new Fraction(num, lcm);
+        }
+
+        public static Fraction operator -(Fraction f1, Fraction f2)
+        {
+            int lcm = LCM(f1.denominator, f2.denominator);
+            int num = f1.numerator * (lcm / f1.denominator) - f2.numerator * (lcm / f2.denominator);
+            return new Fraction(num, lcm);
+        }
+
+        public static Fraction operator *(Fraction f1, Fraction f2)
+        {
+            int num = f1.numerator * f2.numerator;
+            int den = f1.denominator * f2.denominator;
+            return new Fraction(num, den);
+        }
+
+        public static Fraction operator /(Fraction f1, Fraction f2)
+        {
+            int num = f1.numerator * f2.denominator;
+            int den = f1.denominator * f2.numerator;
+            return new Fraction(num, den);
+        }
+
+        private static int LCM(int a, int b)
+        {
+            return (a / GCD(a, b)) * b;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Operaciones con fracciones:");
+            Console.WriteLine("Ingrese la primera fracción en el formato a/b:");
+            string[] input1 = Console.ReadLine().Split('/');
+            Fraction f1 = new Fraction(int.Parse(input1[0]), int.Parse(input1[1]));
+
+            Console.WriteLine("Ingrese la segunda fracción en el formato a/b:");
+            string[] input2 = Console.ReadLine().Split('/');
+            Fraction f2 = new Fraction(int.Parse(input2[0]), int.Parse(input2[1]));
+
+            Fraction sum = f1 + f2;
+            Console.WriteLine($"Suma: {sum}");
+
+            Fraction difference = f1 - f2;
+            Console.WriteLine($"Resta: {difference}");
+
+            Fraction product = f1 * f2;
+            Console.WriteLine($"Multiplicación: {product}");
+
+            Fraction quotient = f1 / f2;
+            Console.WriteLine($"División: {quotient}");
+        }
+    }
+}
