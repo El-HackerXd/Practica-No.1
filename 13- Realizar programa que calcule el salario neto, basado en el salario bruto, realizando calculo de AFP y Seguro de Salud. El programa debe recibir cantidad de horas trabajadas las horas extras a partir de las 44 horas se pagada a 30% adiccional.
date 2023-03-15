@@ -1,0 +1,31 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        const double afp = 0.0287;  // Porcentaje de AFP
+        const double seguro = 0.0304;  // Porcentaje de Seguro de Salud
+        const double horasExtra = 1.30;  // Porcentaje de pago de horas extras
+
+        // Pedir al usuario el salario bruto y las horas trabajadas
+        Console.Write("Ingrese el salario bruto: ");
+        double salarioBruto = double.Parse(Console.ReadLine());
+        Console.Write("Ingrese las horas trabajadas: ");
+        double horasTrabajadas = double.Parse(Console.ReadLine());
+
+        // Calcular el salario neto
+        double salarioNeto = salarioBruto;
+        double horasExtras = 0;
+
+        if (horasTrabajadas > 44) {
+            horasExtras = horasTrabajadas - 44;
+            salarioNeto += (salarioBruto / horasTrabajadas) * horasExtras * horasExtra;
+        }
+
+        salarioNeto -= salarioBruto * afp;
+        salarioNeto -= salarioBruto * seguro;
+
+        // Mostrar el salario neto al usuario
+        Console.WriteLine("Salario neto: " + salarioNeto);
+        Console.ReadLine();
+    }
+}
