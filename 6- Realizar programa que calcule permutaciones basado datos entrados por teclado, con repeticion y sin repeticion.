@@ -1,0 +1,71 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        Console.Write("Ingresa los elementos: ");
+        string elementos = Console.ReadLine();
+
+        Console.Write("Ingresa la longitud de la permutación: ");
+        int longitud = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("\nPermutaciones sin repetición:");
+        PermutacionesSinRepeticion(elementos, longitud);
+
+        Console.WriteLine("\nPermutaciones con repetición:");
+        PermutacionesConRepeticion(elementos, longitud);
+
+        Console.ReadLine();
+    }
+
+    static void PermutacionesSinRepeticion(string elementos, int longitud) {
+        int n = elementos.Length;
+        if (longitud > n) {
+            Console.WriteLine("Error: la longitud de la permutación no puede ser mayor que el número de elementos.");
+            return;
+        }
+        int[] indices = new int[longitud];
+        for (int i = 0; i < longitud; i++) {
+            indices[i] = i;
+        }
+        while (true) {
+            ImprimirPermutacion(elementos, indices);
+            int j = longitud - 1;
+            while (j >= 0 && indices[j] == n - longitud + j) {
+                j--;
+            }
+            if (j < 0) {
+                break;
+            }
+            indices[j]++;
+            for (int i = j + 1; i < longitud; i++) {
+                indices[i] = indices[i - 1] + 1;
+            }
+        }
+    }
+
+    static void PermutacionesConRepeticion(string elementos, int longitud) {
+        int n = elementos.Length;
+        int[] indices = new int[longitud];
+        while (true) {
+            ImprimirPermutacion(elementos, indices);
+            int j = longitud - 1;
+            while (j >= 0 && indices[j] == n - 1) {
+                j--;
+            }
+            if (j < 0) {
+                break;
+            }
+            indices[j]++;
+            for (int i = j + 1; i < longitud; i++) {
+                indices[i] = 0;
+            }
+        }
+    }
+
+    static void ImprimirPermutacion(string elementos, int[] indices) {
+        for (int i = 0; i < indices.Length; i++) {
+            Console.Write(elementos[indices[i]]);
+        }
+        Console.WriteLine();
+    }
+}
