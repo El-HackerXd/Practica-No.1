@@ -1,0 +1,41 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double velocidad, tiempo, distancia;
+
+        Console.WriteLine("Este programa calcula velocidad, tiempo y distancia a partir de dos de estos datos introducidos por teclado.");
+        Console.WriteLine("Introduzca dos de los siguientes valores:");
+
+        Console.Write("Velocidad (m/s): ");
+        string inputVelocidad = Console.ReadLine();
+        Console.Write("Tiempo (s): ");
+        string inputTiempo = Console.ReadLine();
+        Console.Write("Distancia (m): ");
+        string inputDistancia = Console.ReadLine();
+
+        if (Double.TryParse(inputVelocidad, out velocidad) && Double.TryParse(inputTiempo, out tiempo))
+        {
+            distancia = velocidad * tiempo;
+            Console.WriteLine($"Distancia: {distancia} m");
+        }
+        else if (Double.TryParse(inputVelocidad, out velocidad) && Double.TryParse(inputDistancia, out distancia))
+        {
+            tiempo = distancia / velocidad;
+            Console.WriteLine($"Tiempo: {tiempo} s");
+        }
+        else if (Double.TryParse(inputTiempo, out tiempo) && Double.TryParse(inputDistancia, out distancia))
+        {
+            velocidad = distancia / tiempo;
+            Console.WriteLine($"Velocidad: {velocidad} m/s");
+        }
+        else
+        {
+            Console.WriteLine("Se deben introducir al menos dos valores numéricos.");
+        }
+
+        Console.ReadKey();
+    }
+}
