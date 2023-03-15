@@ -1,0 +1,29 @@
+using System;
+
+namespace TrigonometricFunctions
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Ingrese el ángulo en grados:");
+            double angle = double.Parse(Console.ReadLine());
+
+            double radians = angle * Math.PI / 180;
+
+            double sine = Math.Sin(radians);
+            double cosine = Math.Cos(radians);
+            double secant = 1 / cosine;
+            double cosecant = 1 / sine;
+            double tangent = Math.Tan(radians);
+            double cotangent = 1 / tangent;
+
+            Console.WriteLine($"Seno: {sine}");
+            Console.WriteLine($"Coseno: {cosine}");
+            Console.WriteLine($"Secante: {secant}");
+            Console.WriteLine($"Cosecante: {cosecant}");
+            Console.WriteLine($"Tangente: {tangent}");
+            Console.WriteLine($"Cotangente: {cotangent}");
+        }
+    }
+}
