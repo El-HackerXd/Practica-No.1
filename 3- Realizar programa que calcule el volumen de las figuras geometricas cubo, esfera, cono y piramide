@@ -1,0 +1,54 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Ingrese la figura geometrica a calcular el volumen: ");
+        Console.WriteLine("1 - Cubo");
+        Console.WriteLine("2 - Esfera");
+        Console.WriteLine("3 - Cono");
+        Console.WriteLine("4 - Piramide");
+
+        int opcion = int.Parse(Console.ReadLine());
+
+        switch (opcion)
+        {
+            case 1:
+                Console.WriteLine("Ingrese la longitud de un lado del cubo:");
+                double lado = double.Parse(Console.ReadLine());
+                double volumenCubo = Math.Pow(lado, 3);
+                Console.WriteLine("El volumen del cubo es: " + volumenCubo);
+                break;
+
+            case 2:
+                Console.WriteLine("Ingrese el radio de la esfera:");
+                double radio = double.Parse(Console.ReadLine());
+                double volumenEsfera = (4.0 / 3.0) * Math.PI * Math.Pow(radio, 3);
+                Console.WriteLine("El volumen de la esfera es: " + volumenEsfera);
+                break;
+
+            case 3:
+                Console.WriteLine("Ingrese el radio del cono:");
+                double r = double.Parse(Console.ReadLine());
+                Console.WriteLine("Ingrese la altura del cono:");
+                double h = double.Parse(Console.ReadLine());
+                double volumenCono = (Math.PI * Math.Pow(r, 2) * h) / 3.0;
+                Console.WriteLine("El volumen del cono es: " + volumenCono);
+                break;
+
+            case 4:
+                Console.WriteLine("Ingrese el area de la base de la piramide:");
+                double basePiramide = double.Parse(Console.ReadLine());
+                Console.WriteLine("Ingrese la altura de la piramide:");
+                double alturaPiramide = double.Parse(Console.ReadLine());
+                double volumenPiramide = (basePiramide * alturaPiramide) / 3.0;
+                Console.WriteLine("El volumen de la piramide es: " + volumenPiramide);
+                break;
+
+            default:
+                Console.WriteLine("Opcion no valida");
+                break;
+        }
+    }
+}
