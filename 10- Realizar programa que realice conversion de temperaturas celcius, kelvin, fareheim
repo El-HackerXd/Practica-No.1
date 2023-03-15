@@ -1,0 +1,71 @@
+using System;
+
+namespace ConversionTemperaturas
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int opcion;
+            double temperatura;
+
+            Console.WriteLine("Ingrese la temperatura a convertir: ");
+            temperatura = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("\nSeleccione la unidad de temperatura a convertir: ");
+            Console.WriteLine("1. Celsius");
+            Console.WriteLine("2. Kelvin");
+            Console.WriteLine("3. Fahrenheit");
+            opcion = int.Parse(Console.ReadLine());
+
+            switch (opcion)
+            {
+                case 1: // Celsius
+                    Console.WriteLine($"\n{temperatura}°C es equivalente a {CelsiusAKelvin(temperatura):F2}K y {CelsiusAFahrenheit(temperatura):F2}°F");
+                    break;
+                case 2: // Kelvin
+                    Console.WriteLine($"\n{temperatura}K es equivalente a {KelvinACelsius(temperatura):F2}°C y {KelvinAFahrenheit(temperatura):F2}°F");
+                    break;
+                case 3: // Fahrenheit
+                    Console.WriteLine($"\n{temperatura}°F es equivalente a {FahrenheitACelsius(temperatura):F2}°C y {FahrenheitAKelvin(temperatura):F2}K");
+                    break;
+                default:
+                    Console.WriteLine("Opción inválida.");
+                    break;
+            }
+
+            Console.ReadLine();
+        }
+
+        // Funciones de conversión
+        static double CelsiusAKelvin(double celsius)
+        {
+            return celsius + 273.15;
+        }
+
+        static double KelvinACelsius(double kelvin)
+        {
+            return kelvin - 273.15;
+        }
+
+        static double CelsiusAFahrenheit(double celsius)
+        {
+            return celsius * 9 / 5 + 32;
+        }
+
+        static double FahrenheitACelsius(double fahrenheit)
+        {
+            return (fahrenheit - 32) * 5 / 9;
+        }
+
+        static double KelvinAFahrenheit(double kelvin)
+        {
+            return CelsiusAFahrenheit(KelvinACelsius(kelvin));
+        }
+
+        static double FahrenheitAKelvin(double fahrenheit)
+        {
+            return CelsiusAKelvin(FahrenheitACelsius(fahrenheit));
+        }
+    }
+}
