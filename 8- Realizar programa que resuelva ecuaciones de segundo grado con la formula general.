@@ -1,0 +1,46 @@
+using System;
+
+namespace EcuacionSegundoGrado
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double a, b, c;
+            double discriminante, raizDiscriminante;
+            double x1, x2;
+
+            Console.Write("Ingrese el valor de a: ");
+            a = double.Parse(Console.ReadLine());
+
+            Console.Write("Ingrese el valor de b: ");
+            b = double.Parse(Console.ReadLine());
+
+            Console.Write("Ingrese el valor de c: ");
+            c = double.Parse(Console.ReadLine());
+
+            // Calcula el discriminante
+            discriminante = b * b - 4 * a * c;
+
+            if (discriminante < 0)
+            {
+                Console.WriteLine("La ecuación no tiene soluciones reales.");
+            }
+            else if (discriminante == 0)
+            {
+                x1 = -b / (2 * a);
+                Console.WriteLine("La ecuación tiene una única solución real: x = {0}", x1);
+            }
+            else
+            {
+                // Calcula las dos soluciones posibles
+                raizDiscriminante = Math.Sqrt(discriminante);
+                x1 = (-b + raizDiscriminante) / (2 * a);
+                x2 = (-b - raizDiscriminante) / (2 * a);
+                Console.WriteLine("La ecuación tiene dos soluciones reales: x1 = {0} y x2 = {1}", x1, x2);
+            }
+
+            Console.ReadLine();
+        }
+    }
+}
