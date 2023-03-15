@@ -2,7 +2,7 @@
 
 Realizar los siguientes programa utilizando el lenguaje de programación C#.NET.
 
-0- Reralizar programa que despligue el factorial de numero.
+0- Realizar programa que despligue el factorial de numero.
 
 1- Realizar programa que despliegue la serie fibonacci desde un numero hasta un limite definido
 
