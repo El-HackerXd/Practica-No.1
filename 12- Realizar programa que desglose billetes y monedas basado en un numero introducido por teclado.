@@ -1,0 +1,51 @@
+using System;
+
+namespace DesgloseBilletesMonedas
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int cantidad, billetes500, billetes200, billetes100, billetes50, billetes20, billetes10, billetes5, monedas2, monedas1;
+
+            Console.Write("Ingrese la cantidad a desglosar: ");
+            cantidad = int.Parse(Console.ReadLine());
+
+            billetes500 = cantidad / 500;
+            cantidad %= 500;
+
+            billetes200 = cantidad / 200;
+            cantidad %= 200;
+
+            billetes100 = cantidad / 100;
+            cantidad %= 100;
+
+            billetes50 = cantidad / 50;
+            cantidad %= 50;
+
+            billetes20 = cantidad / 20;
+            cantidad %= 20;
+
+            billetes10 = cantidad / 10;
+            cantidad %= 10;
+
+            billetes5 = cantidad / 5;
+            cantidad %= 5;
+
+            monedas2 = cantidad / 2;
+            cantidad %= 2;
+
+            monedas1 = cantidad;
+
+            Console.WriteLine("\nDesglose de billetes y monedas:");
+            Console.WriteLine($"Billetes de 500: {billetes500}");
+            Console.WriteLine($"Billetes de 200: {billetes200}");
+            Console.WriteLine($"Billetes de 100: {billetes100}");
+            Console.WriteLine($"Billetes de 50: {billetes50}");
+            Console.WriteLine($"Billetes de 20: {billetes20}");
+            Console.WriteLine($"Billetes de 10: {billetes10}");
+            Console.WriteLine($"Billetes de 5: {billetes5}");
+            Console.WriteLine($"Monedas de 2: {monedas2}");
+            Console.WriteLine($"Monedas de 1: {monedas1}");
+
+           
