@@ -1,0 +1,36 @@
+using System;
+
+namespace Combinaciones
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, r;
+
+            Console.Write("Ingrese el valor de n: ");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write("Ingrese el valor de r: ");
+            r = int.Parse(Console.ReadLine());
+
+            // Combinaciones sin repetición
+            int combSinRep = Factorial(n) / (Factorial(r) * Factorial(n - r));
+            Console.WriteLine("Combinaciones sin repetición: {0}", combSinRep);
+
+            // Combinaciones con repetición
+            int combConRep = Factorial(n + r - 1) / (Factorial(r) * Factorial(n - 1));
+            Console.WriteLine("Combinaciones con repetición: {0}", combConRep);
+
+            Console.ReadLine();
+        }
+
+        static int Factorial(int n)
+        {
+            if (n == 0)
+                return 1;
+            else
+                return n * Factorial(n - 1);
+        }
+    }
+}
