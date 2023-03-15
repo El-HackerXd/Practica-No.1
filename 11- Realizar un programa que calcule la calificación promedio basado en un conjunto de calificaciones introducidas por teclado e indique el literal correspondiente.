@@ -1,0 +1,52 @@
+using System;
+
+namespace CalculoCalificaciones
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int cantidadCalificaciones;
+            double calificacion, sumaCalificaciones = 0, promedio;
+            string literal;
+
+            Console.Write("Ingrese la cantidad de calificaciones: ");
+            cantidadCalificaciones = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= cantidadCalificaciones; i++)
+            {
+                Console.Write($"Ingrese la calificación #{i}: ");
+                calificacion = double.Parse(Console.ReadLine());
+                sumaCalificaciones += calificacion;
+            }
+
+            promedio = sumaCalificaciones / cantidadCalificaciones;
+
+            if (promedio >= 90)
+            {
+                literal = "A";
+            }
+            else if (promedio >= 80)
+            {
+                literal = "B";
+            }
+            else if (promedio >= 70)
+            {
+                literal = "C";
+            }
+            else if (promedio >= 60)
+            {
+                literal = "D";
+            }
+            else
+            {
+                literal = "F";
+            }
+
+            Console.WriteLine($"\nEl promedio de las calificaciones es: {promedio:F2}");
+            Console.WriteLine($"El literal correspondiente es: {literal}");
+
+            Console.ReadLine();
+        }
+    }
+}
