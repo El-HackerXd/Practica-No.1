@@ -1,0 +1,43 @@
+Copy code
+using System;
+
+class FigurasGeometricas
+{
+    static void Main(string[] args)
+    {
+        int opcion;
+        double lado, radio, altura, apotema, area;
+
+        Console.WriteLine("1. Calcular el área de un cuadrado");
+        Console.WriteLine("2. Calcular el área de un círculo");
+        Console.WriteLine("3. Calcular el área de un triángulo");
+        Console.WriteLine("4. Calcular el área de un pentágono");
+        Console.WriteLine("5. Calcular el área de un hexágono");
+        Console.Write("Ingrese su opción (1-5): ");
+        opcion = Convert.ToInt32(Console.ReadLine());
+
+        switch (opcion)
+        {
+            case 1:
+                Console.Write("Ingrese la medida del lado: ");
+                lado = Convert.ToDouble(Console.ReadLine());
+                area = lado * lado;
+                Console.WriteLine("El área del cuadrado es {0}", area);
+                break;
+            case 2:
+                Console.Write("Ingrese la medida del radio: ");
+                radio = Convert.ToDouble(Console.ReadLine());
+                area = Math.PI * radio * radio;
+                Console.WriteLine("El área del círculo es {0}", area);
+                break;
+            case 3:
+                Console.Write("Ingrese la medida de la base: ");
+                lado = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Ingrese la medida de la altura: ");
+                altura = Convert.ToDouble(Console.ReadLine());
+                area = 0.5 * lado * altura;
+                Console.WriteLine("El área del triángulo es {0}", area);
+                break;
+            case 4:
+                Console.Write("Ingrese la medida del lado: ");
+                lado = Convert.ToDouble(Console.ReadLine
